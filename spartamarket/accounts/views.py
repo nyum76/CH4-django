@@ -68,3 +68,18 @@ def profile(request, username):
     }
     return render(request, 'accounts/profile.html', context)
 
+@login_required
+def profile_edit(request, username):
+    if request.username != username:
+        return redirect('accounts:profile', username=username)
+    
+    user = get_object_or_404(User, username=username)
+    if request.method == "POST":
+        form = ProfileForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('accounts:profile', username=username)
+    else:
+        form = ProfileForm(instance=user)
+        
+    return render(request, 'accounts/profile_edit.html', {'form':form})
