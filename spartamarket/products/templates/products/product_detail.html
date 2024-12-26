@@ -29,13 +29,13 @@
     {% endif %}
 </form>
 
-{% comment %} {% if user == product.user %}
+{% if user == product.user %}
 <a href="{% url "products:product_update" product.pk %}">수정</a>
 <form action="{% url 'products:product_delete' product.pk %}" method="post" style="display:inline;">
     {% csrf_token %}
     <button type="submit">삭제</button>
 </form>
-{% endif %} {% endcomment %}
+{% endif %}
 
 
 
