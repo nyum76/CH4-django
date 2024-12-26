@@ -3,7 +3,7 @@
 <h2>{{ product.title }}</h2>
 <p>
     등록자:
-    {% comment %} <a href="{% url 'accounts:profile' product.user.username %}"> {% endcomment %}
+    <a href="{% url 'accounts:profile' product.user.username %}">
         {{ product.user.username }}
     </a>
     / 등록일: {{ product.created_at|date:"Y-m-d H:i" }}
