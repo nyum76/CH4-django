@@ -11,7 +11,7 @@
         <nav>
             
             {% if user.is_authenticated %}
-                {% comment %} <a href="{% url 'accounts:profile' user.username %}">내 프로필</a> {% endcomment %}
+                <a href="{% url 'accounts:profile' user.username %}">내 프로필</a>
                 <a href="{% url 'accounts:logout' %}">로그아웃</a>
             {% else %}
                 <a href="{% url 'accounts:signup' %}">회원가입</a>
