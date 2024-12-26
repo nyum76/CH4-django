@@ -20,7 +20,7 @@
 {% endfor %}
 </p>
 
-{% comment %} <form action="{% url 'products:product_like' product.pk %}" method="post"> {% endcomment %}
+<form action="{% url 'products:product_like' product.pk %}" method="post">
     {% csrf_token %}
     {% if user in product.likes.all %}
         <button type="submit">찜 취소</button>

@@ -52,3 +52,13 @@ def product_delete(request, pk):
         product.delete()
         return redirect('products:product_list')
     return render(request, 'products/product_detail.html', {'product':product})
+
+@login_required
+def product_like(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.user in product.likes.all(): # 이미 유저가 해당 상품을 찜했다면
+        product.likes.remove(request.user) # 찜 해제
+    else:
+        product.likes.add(request.user) # 찜하기
+    return redirect('products:product_detail', pk=pk)
+
