@@ -10,7 +10,7 @@
 <p>팔로워: {{ profile_user.follower_count }}명 / 팔로잉: {{ profile_user.following_count }}명</p>
 
 
-{% comment %} {% if request.user != profile_user %}
+{% if request.user != profile_user %}
 <form action="{% url 'accounts:follow' profile_user.username %}" method="post">
     {% csrf_token %}
     {% if is_following %}
@@ -19,7 +19,7 @@
         <button type="submit">팔로우</button>
     {% endif %}
 </form>
-{% endif %} {% endcomment %}
+{% endif %}
 
 <h3>내가 등록한 물품들</h3>
 <ul>
