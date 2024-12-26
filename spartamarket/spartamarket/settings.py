@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'products',
 ]
 
+AUTH_USER_MODEL = 'accounts.User'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -47,7 +49,7 @@ ROOT_URLCONF = 'spartamarket.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'], # base.html 파일 위치 명시
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

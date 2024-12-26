@@ -1,0 +1,10 @@
+{% comment %}{% extends "base.html" %}{% endcomment %}
+
+{% block content %}
+<h2>회원가입</h2>
+<form method="post" enctype="multipart/form-date">
+    {% csrf_token %} {# form 태그를 쓸 땐 항상 csrf_token 쓰기 #}
+    {{ form.as_p }}  {# 전달받은 form 사용 #}
+    <button type="submit">회원가입</button>
+</form>
+{% endblock content %}
