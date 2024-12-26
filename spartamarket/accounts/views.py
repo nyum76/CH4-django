@@ -24,4 +24,17 @@ def signup(request):
     }
     return render(request, 'accounts/signup.html', context)
 
-
+def login(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect("products:product_list")
+    else:
+        form = AuthenticationForm()
+    
+    context = {
+        "form":form
+    }
+    return render(request, 'accounts/login.html', context)
