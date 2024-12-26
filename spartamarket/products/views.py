@@ -40,7 +40,7 @@ def product_update(request, pk):
     else:
         form = ProductForm(instance=product, initial={'hashtags_str':''.join(ht.name for ht in product.hashtags.all())})
         
-    return render(request, 'products/product_form.html', {'form':form, 'product':product})
+    return render(request, 'products/product_create.html', {'form':form, 'product':product})
 
 @login_required
 def product_delete(request, pk):
