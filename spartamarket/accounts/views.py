@@ -83,3 +83,15 @@ def profile_edit(request, username):
         form = ProfileForm(instance=user)
         
     return render(request, 'accounts/profile_edit.html', {'form':form})
+
+@login_required
+def follow(request, username):
+    target_user = get_object_or_404(User, username=username)
+    if target_user != request.user:
+        # 팔로우가 되어 있는 상태 -> 1
+        if request.user.follows.filter(pk=target_user.pk).exists():
+            # 취소하는 버튼 생성
+            request.user.follows.remove(target_user)
+        else:
+            request.user.follows.add(target_user)
+    return redirect('accounts:profile', username=username)
